@@ -1,0 +1,13 @@
+//
+//  APIResource.xcconfig
+//  CoffeDictionaryApp
+//
+//  Created by 박형환 on 2023/04/19.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+SIMPLE_SLASH = /
+SAMPLE_COFFE_ENDPOINT_ICED = https:$(SIMPLE_SLASH)/api.sampleapis.com/coffee/iced
+SAMPLE_COFFE_ENDPOINT_HOT = https:$(SIMPLE_SLASH)/api.sampleapis.com/coffee/hot

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Ice</key>
+	<string></string>
+	<key>Hot</key>
+	<string>${SAMPLE_COFFE_ENDPOINT_HOT}</string>
+</dict>
+</plist>
