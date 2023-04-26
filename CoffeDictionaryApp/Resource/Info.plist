@@ -6,6 +6,12 @@
 	<string>${SAMPLE_COFFE_ENDPOINT_ICED}</string>
 	<key>Hot</key>
 	<string>${SAMPLE_COFFE_ENDPOINT_HOT}</string>
+	<key>PapagoAPIResource</key>
+	<string>${PapagoAPIResource}</string>
+	<key>X_Naver_Client_Secret</key>
+	<string>${X_Naver_Client_Secret}</string>
+	<key>X_Naver_Client_Id</key>
+	<string>${X_Naver_Client_Id}</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

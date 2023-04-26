@@ -26,7 +26,19 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
     private lazy var coffee_name: UILabel = {
         let label = UILabel.fontSetting("커피")
         label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
+    }()
+    
+    private lazy var translateButton: UIButton = {
+        let button = UIButton()
+        button.setAttributedTitle(NSAttributedString(string: "번역", attributes: [.font : UIFont.boldSystemFont(ofSize: 14)]), for: .normal)
+        button.backgroundColor = .systemGray
+        button.layer.borderColor = UIColor.label.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(translateButtonTapped(_:)), for: .touchUpInside)
+        return button
     }()
     
     private lazy var coffee_description: UILabel = {
@@ -43,6 +55,9 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
         return imageView
     }()
     
+    var coffee: Coffee?
+    weak var translateBehavior: TranslateBehavior?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutConfigure()
@@ -52,12 +67,15 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
         fatalError("required init fatalError")
     }
     
+    @objc func translateButtonTapped(_ sender: UIButton){
+        translateBehavior?.translate(coffee!)
+    }
     
-    
-    func bind(_ coffee: Coffee){
+    func bind(_ coffee: Coffee,_ delegate: TranslateBehavior ){
         coffee_name.text = coffee.title
         coffee_description.text = coffee.description
-        
+        self.coffee = coffee
+        self.translateBehavior = delegate
         ImageResizeLoader.resizeImage(coffee.image, completion: { [weak self] resizedImage in
             guard let self else {return}
             self.coffee_ImageView.image = resizedImage
@@ -66,6 +84,7 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
     
     private func layoutConfigure(){
         contentView.addSubview(coffee_name)
+        contentView.addSubview(translateButton)
         contentView.addSubview(coffee_description)
         contentView.addSubview(coffee_ImageView)
         
@@ -76,8 +95,21 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
         
         coffee_name.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(spacing)
-            make.trailing.greaterThanOrEqualToSuperview().inset(spacing)
         }
+        
+        coffee_name.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        coffee_name.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        translateButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(12)
+            make.top.equalTo(coffee_name.snp.top)
+            make.width.equalTo(30)
+            make.height.equalTo(25)
+            make.leading.equalTo(coffee_name.snp.trailing).offset(-12)
+        }
+        translateButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        translateButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         coffee_description.snp.makeConstraints { make in
             make.top.equalTo(coffee_name.snp.bottom).offset(spacing)
             make.leading.equalToSuperview().inset(spacing)
@@ -85,10 +117,10 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
             make.bottom.equalToSuperview().inset(spacing)
         }
         coffee_ImageView.snp.makeConstraints { make in
-            make.top.equalTo(coffee_description.snp.top)
+            make.top.equalTo(translateButton.snp.bottom).offset(spacing)
             make.trailing.equalToSuperview().inset(spacing)
             make.width.height.equalTo(80)
-            make.bottom.equalToSuperview().inset(spacing)
+            make.bottom.equalToSuperview().inset(spacing).priority(.high)
         }
     }
     

@@ -14,7 +14,7 @@
 		96BA53CC29F02BA500B5BDD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BA53CA29F02BA500B5BDD3 /* LaunchScreen.storyboard */; };
 		96BA53D429F02D6300B5BDD3 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53D329F02D6200B5BDD3 /* Coffee.swift */; };
 		96BA53D629F0327B00B5BDD3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53D529F0327B00B5BDD3 /* NetworkService.swift */; };
-		96BA53D929F03B5100B5BDD3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53D829F03B5100B5BDD3 /* EndPoint.swift */; };
+		96BA53D929F03B5100B5BDD3 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53D829F03B5100B5BDD3 /* Interface.swift */; };
 		96BA53E029F0451500B5BDD3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 96BA53DF29F0451500B5BDD3 /* Kingfisher */; };
 		96BA53E329F0452200B5BDD3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96BA53E229F0452200B5BDD3 /* SnapKit */; };
 		96BA53E629F12CC300B5BDD3 /* CoffeeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53E529F12CC300B5BDD3 /* CoffeeSearchBar.swift */; };
@@ -25,6 +25,9 @@
 		96BA53F429F16A5500B5BDD3 /* Array-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53F329F16A5500B5BDD3 /* Array-ext.swift */; };
 		96BA53F629F16B7000B5BDD3 /* CoffeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53F529F16B7000B5BDD3 /* CoffeeDetailViewController.swift */; };
 		96BA53FB29F16CD500B5BDD3 /* CoffeeDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA53FA29F16CD500B5BDD3 /* CoffeeDetailCell.swift */; };
+		96BA540F29F93F6300B5BDD3 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA540E29F93F6300B5BDD3 /* HTTPHeaderField.swift */; };
+		96BA541129F942F800B5BDD3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA541029F942F800B5BDD3 /* NetworkError.swift */; };
+		96BA541329F9446600B5BDD3 /* URLRequest-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BA541229F9446600B5BDD3 /* URLRequest-ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +41,7 @@
 		96BA53D329F02D6200B5BDD3 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		96BA53D529F0327B00B5BDD3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		96BA53D729F032ED00B5BDD3 /* APIResource.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIResource.xcconfig; sourceTree = "<group>"; };
-		96BA53D829F03B5100B5BDD3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		96BA53D829F03B5100B5BDD3 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		96BA53E529F12CC300B5BDD3 /* CoffeeSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeSearchBar.swift; sourceTree = "<group>"; };
 		96BA53E729F12DF600B5BDD3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		96BA53E929F1313C00B5BDD3 /* CoffeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCell.swift; sourceTree = "<group>"; };
@@ -47,6 +50,9 @@
 		96BA53F329F16A5500B5BDD3 /* Array-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-ext.swift"; sourceTree = "<group>"; };
 		96BA53F529F16B7000B5BDD3 /* CoffeeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewController.swift; sourceTree = "<group>"; };
 		96BA53FA29F16CD500B5BDD3 /* CoffeeDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailCell.swift; sourceTree = "<group>"; };
+		96BA540E29F93F6300B5BDD3 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		96BA541029F942F800B5BDD3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		96BA541229F9446600B5BDD3 /* URLRequest-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest-ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				96BA53D529F0327B00B5BDD3 /* NetworkService.swift */,
+				96BA541029F942F800B5BDD3 /* NetworkError.swift */,
+				96BA540E29F93F6300B5BDD3 /* HTTPHeaderField.swift */,
 				96BA53EE29F1436500B5BDD3 /* ImageResizeLoader.swift */,
-				96BA53D829F03B5100B5BDD3 /* EndPoint.swift */,
+				96BA53D829F03B5100B5BDD3 /* Interface.swift */,
 				96BA53F229F16A4E00B5BDD3 /* Util */,
 			);
 			path = Service;
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				96BA53F329F16A5500B5BDD3 /* Array-ext.swift */,
+				96BA541229F9446600B5BDD3 /* URLRequest-ext.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -245,7 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96BA53D929F03B5100B5BDD3 /* EndPoint.swift in Sources */,
+				96BA53D929F03B5100B5BDD3 /* Interface.swift in Sources */,
+				96BA541129F942F800B5BDD3 /* NetworkError.swift in Sources */,
+				96BA540F29F93F6300B5BDD3 /* HTTPHeaderField.swift in Sources */,
+				96BA541329F9446600B5BDD3 /* URLRequest-ext.swift in Sources */,
 				96BA53E829F12DF600B5BDD3 /* SearchCell.swift in Sources */,
 				96BA53E629F12CC300B5BDD3 /* CoffeeSearchBar.swift in Sources */,
 				96BA53EF29F1436500B5BDD3 /* ImageResizeLoader.swift in Sources */,

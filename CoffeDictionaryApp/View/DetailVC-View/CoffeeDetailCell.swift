@@ -55,8 +55,9 @@ class CoffeeDetailCell: UITableViewCell,CellIdentifier{
     func image_layoutConfigure(){
         contentView.addSubview(coffee_imageView)
         coffee_imageView.snp.makeConstraints{
-            $0.edges.equalToSuperview().inset(12)
-            $0.height.equalTo(200)
+            $0.top.leading.trailing.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(12)
+            $0.height.equalTo(200).priority(.low)
         }
     }
     

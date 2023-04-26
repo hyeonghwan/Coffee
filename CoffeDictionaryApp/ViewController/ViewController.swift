@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol TranslateBehavior: AnyObject{
+    func translate(_ coffee: Coffee)
+}
+
 
 class ViewController: UIViewController {
     
@@ -79,7 +83,7 @@ class ViewController: UIViewController {
         }
         segmentsControls.snp.makeConstraints { make in
             make.width.equalTo(200)
-            make.height.equalTo(50)
+            make.height.equalTo(44)
         }
     }
 }
@@ -143,7 +147,7 @@ extension ViewController: UITableViewDataSource{
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeCell.identifier, for: indexPath) as! CoffeeCell
-            cell.bind(model[indexPath.row])
+            cell.bind(model[indexPath.row],self)
             return cell
         }
     }
@@ -151,5 +155,11 @@ extension ViewController: UITableViewDataSource{
 
 extension ViewController: UISearchBarDelegate{
     
+}
+
+extension ViewController: TranslateBehavior{
+    func translate(_ coffee: Coffee) {
+        NetworkService.shared.translateRequest(coffee)
+    }
 }
 
