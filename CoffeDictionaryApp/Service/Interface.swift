@@ -60,9 +60,35 @@ extension CoffeeRequestable{
     }
 }
 
+//MARK: -Wiki URL
+
+protocol WikiRequestable: APIRequestURL{
+    
+}
+extension WikiRequestable{
+    func endPoint(with wiki: String = "wikiQA") -> URL {
+        guard
+            let url = URL(string:"http://aiopen.etri.re.kr:8000/WikiQA")
+        else {
+            assert(false, "wiki url fail")
+        }
+        return url
+    }
+    
+    var Wiki_API_Key: String{
+        guard
+            let url = Bundle.main.infoDictionary?["Wiki_API_Key"] as? String
+        else {
+            return ""
+        }
+        return url
+    }
+}
+
 //MARK: -Papago URL
 
 protocol PapagoRequestable: APIRequestURL{
+    
     
 }
 

@@ -56,11 +56,25 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
     }()
     
     var coffee: Coffee?
-    weak var translateBehavior: TranslateBehavior?
+    var translateBehavior: TranslateBehavior?
+    var translateCompletion: ((String) -> ())?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutConfigure()
+        translateCompletion = {[weak self] string in
+            let tranArr = string.components(separatedBy: "!@#$")
+            guard
+                let self,
+                let title = tranArr.first,
+                let description = tranArr.last
+            else {return}
+            
+            DispatchQueue.main.async {
+                self.coffee_name.text = title
+                self.coffee_description.text = description
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -68,8 +82,9 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
     }
     
     @objc func translateButtonTapped(_ sender: UIButton){
-        translateBehavior?.translate(coffee!)
+        translateBehavior?.translate(coffee!,translateCompletion!)
     }
+    
     
     func bind(_ coffee: Coffee,_ delegate: TranslateBehavior ){
         coffee_name.text = coffee.title
@@ -111,19 +126,47 @@ class CoffeeCell: UITableViewCell,CellIdentifier{
         translateButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         
         coffee_description.snp.makeConstraints { make in
-            make.top.equalTo(coffee_name.snp.bottom).offset(spacing)
+            make.top.equalTo(coffee_ImageView.snp.top).offset(spacing)
             make.leading.equalToSuperview().inset(spacing)
             make.trailing.equalTo(coffee_ImageView.snp.leading)
-            make.bottom.equalToSuperview().inset(spacing)
+            make.height.greaterThanOrEqualTo(coffee_ImageView.snp.height)
+            make.bottom.equalToSuperview()
         }
+        
+        
         coffee_ImageView.snp.makeConstraints { make in
             make.top.equalTo(translateButton.snp.bottom).offset(spacing)
             make.trailing.equalToSuperview().inset(spacing)
             make.width.height.equalTo(80)
-            make.bottom.equalToSuperview().inset(spacing).priority(.high)
         }
     }
     
 }
 
 
+
+class NodataCell: UITableViewCell, CellIdentifier{
+    
+    private lazy var label: UILabel = {
+        let label = UILabel.fontSetting()
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.numberOfLines = 0
+        label.text = "현재 추가된 데이터가 없습니다. 추가해주세요!"
+        label.contentMode = .center
+        label.textAlignment = .center
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.addSubview(label)
+        label.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("required init fatalError")
+        
+    }
+}

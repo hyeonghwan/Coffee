@@ -7,11 +7,17 @@
 
 import Foundation
 
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
 extension Array where Element == Coffee {
     func makeTypeID(_ component: String?) -> Self{
         let maps = self.map{ coffee in
-            return Coffee(type_ID: "\(component!)_\(coffee.id)",
-                          id: coffee.id,
+            return Coffee(id: "\(component!)_\(coffee.type_ID)",
+                          type_ID: coffee.type_ID,
                           title: coffee.title,
                           description: coffee.description,
                           image: coffee.image,
@@ -20,3 +26,5 @@ extension Array where Element == Coffee {
         return maps
     }
 }
+
+

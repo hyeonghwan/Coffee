@@ -8,6 +8,7 @@
 import Foundation
 
 
+
 enum CoffeeType: CaseIterable{
     typealias URL = String
     
@@ -20,12 +21,24 @@ enum CoffeeType: CaseIterable{
     }
 }
 
-struct Coffee: Decodable{
+
+struct Coffee: Codable,Identifiable{
     typealias Identifier = String
-    let type_ID: Identifier?
-    let id: Int
+    let id: Identifier?
+    let type_ID: Int
     let title: String
     let description: String
     let image: String
     let ingredients: [String]
+    var star: Bool? = false
+    
+    enum CodingKeys: String,CodingKey{
+        case id = "type_ID"
+        case type_ID = "id"
+        case title
+        case description
+        case image
+        case ingredients
+        case star
+    }
 }

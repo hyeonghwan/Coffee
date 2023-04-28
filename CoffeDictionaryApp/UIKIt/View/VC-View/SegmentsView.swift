@@ -6,6 +6,13 @@
 //
 
 import UIKit
+
+
+enum SegmentType: Int{
+    case all
+    case ice
+    case hot
+}
 protocol MSegmentedControlDelegate:AnyObject {
     func segSelectedIndexChange(to index:Int)
 }

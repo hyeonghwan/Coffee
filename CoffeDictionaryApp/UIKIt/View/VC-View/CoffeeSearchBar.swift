@@ -16,9 +16,7 @@ class CoffeeSearchBar: UISearchBar{
     convenience init(frame: CGRect,delegate: UISearchBarDelegate) {
         self.init(frame: frame)
         self.delegate = delegate
-        settingView()
-        
-        
+        settingView()   
     }
     
     required init?(coder: NSCoder) {

@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -18,10 +18,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windoScene)
         window.makeKeyAndVisible()
         
-        let viewController = ViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let tabBarController = UITabBarController()
         
-        window.rootViewController = navigationController
+        let hostingViewController = UIHostingController(rootView: ContentView())
+        
+        let viewController = ViewController()
+        
+        let favoriteViewController = UINavigationController(rootViewController: viewController)
+        
+        tabBarController.setViewControllers([hostingViewController,favoriteViewController], animated: true)
+        
+        viewController.tabBarItem = UITabBarItem(title: "UIKit-Favorite", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
+        hostingViewController.tabBarItem = UITabBarItem(title: "SwiftUI", image: UIImage(systemName: "swift"), selectedImage: UIImage(systemName: "swift"))
+        
+        tabBarController.tabBar.tintColor = .orange
+        tabBarController.tabBar.unselectedItemTintColor = .gray
+        tabBarController.tabBar.backgroundColor = .systemGray
+        
+        window.rootViewController = tabBarController
         
         self.window = window
     }
